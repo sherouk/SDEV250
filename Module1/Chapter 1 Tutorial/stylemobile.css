@@ -3,11 +3,11 @@
     Chapter case
 
     Tinley Xeriscapes
-    Large format style sheet
+    Handheld style sheet
     Author: 
     Date:   
 
-    Filename: tinley.css
+    Filename: tinleyhand.css
 */
 
 /* apply a natural box layout model to all elements */
@@ -90,60 +90,58 @@ a:active {
 /* container */
 #container {
    background: rgb(50,34,99);
+   max-width: 100%;
+   overflow: hidden;
+   position: relative;
 }
 
 /* page header */
 header {
    background: rgb(50,34,99);
-   width: 100%;
+   max-width: 100%;
+   overflow: hidden;
    font-family: 'Lily Script One', cursive;
    color: rgb(13,177,75);
-   font-size: 84px;
-   text-align: right;
-   padding-right: 20px;
-   position: relative;
+   font-size: 36px;
+   text-align: center;
+   vertical-align: middle;
+   padding-top: 10px;
 }
 
-header #logo1 {
-   position: absolute;
-   top: -8px;
-   left: 0px;
-   -webkit-transform: scale(0.8);
-   -moz-transform: scale(0.8);
-   -o-transform: scale(0.8);
-   writing-mode: lr-tb;    
+header h1 {
+   max-width: 80%;
+   margin: 0 auto;
 }
-header #logo2 {
-   position: absolute;
-   top: 25px;
-   left: 54px;
-   -webkit-transform: scale(0.6);
-   -moz-transform: scale(0.6);
-   -o-transform: scale(0.6);
-   writing-mode: lr-tb;
+
+header #logo1, header #logo2 {
+   display: none;   
 }
+
 header #logo3 {
    position: absolute;
-   top: 0;
-   left: 150px;
+   top: 10px;
+   left: 10px;
+   width: 66px;
+   height: 60px;
 }
 
 /* navigation */
 nav {
    background: rgb(50,34,99);
-   width: 100%;
-   font-size: 16px;
+   overflow: hidden;
+   font-size: 14px;
 }
 
 nav ul {
-   margin-left: 320px;
    text-align: center;
+   border-bottom: 1px solid rgb(164,191,150);
 }
 
 nav ul li {
    display: inline-block;
-   padding: 10px 15px;
+   padding: 5px 15px;
    background: rgb(164,191,150);
+   margin-top: 3px;
    -moz-border-radius-topleft: 7px;
    -moz-border-radius-topright: 7px;
    -webkit-border-top-left-radius: 7px;
@@ -158,18 +156,22 @@ nav ul #currentpage {
 
 /* sidebar */
 aside {
-   width: 320px;
-   float: left;
-   background: rgb(13,177,75);
+   background: rgb(50,34,99);
+   max-width: 100%;
+   overflow: hidden;
 }
 
 aside ul {
-   padding: 20px;
+   padding: 5px;
+   text-align: center;
 }
 
 aside ul li {
-   padding: 10px;
-   font-size: 24px;
+   padding: 6px;
+   font-size: 12px;
+   display: inline-block;
+   background: rgb(13,177,75);
+   border: 1px solid rgb(13,177,75);
 }
 
 aside ul li:hover {
@@ -179,9 +181,19 @@ aside ul li:hover {
 
 /* main content */
 article {
-   width: 640px;
-   float: right;
    text-align: center;
+   max-width: 100%;
+   overflow: hidden;
+}
+
+
+/* remove blank space for descenders below image */
+article figure img {
+   display: block;
+   max-width: 100%;
+   height: auto;
+   width: auto;
+   margin: 0 auto;
 }
 
 article figure figcaption p {
@@ -194,17 +206,12 @@ article figure figcaption p a:link {
    color: rgb(13,177,75);
 }
 
-/* remove blank space for descenders below image */
-article figure img {
-   display: block;
-}
-
 /* footer */
 footer {
    background: rgb(164,191,150);
-   width: 100%;
-   clear: both;
-   font-size: 14px;
+   max-width: 100%;
+   overflow: hidden;
+   font-size: 12px;
    padding: 10px;
 }
 
