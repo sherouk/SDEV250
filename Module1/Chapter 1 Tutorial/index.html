@@ -23,6 +23,7 @@
       <link rel="stylesheet" href="tinley.css" />
    <![endif]-->
     <link href='http://fonts.googleapis.com/css?family=Lily+Script+One' rel='stylesheet' type='text/css'>
+    <script src="modernizr.custom.05819.js"></script>
 </head>
 
 <body>
@@ -47,16 +48,23 @@
 
         <aside>
             <ul>
-                <li>Blanket Flower</li>
-                <li>Hedge Rose</li>
-                <li>Little Bluestem</li>
+                <li onclick="document.getElementById('plantImg').src = blanket">Blanket Flower</li>
+                <li onclick="document.getElementById('plantImg').src = rugosa">Hedge Rose</li>
+                <li onclick="document.getElementById('plantImg').src = bluestem">Little Bluestem</li>
             </ul>
         </aside>
 
         <article>
             <figure>
+                <img src="#" width="640" height="400" alt="" title="" />
                 <figcaption>
-
+                    <script>
+                        /*
+                        Information on available plants
+                        including link to USDA website
+                        */
+                        document.write("<p>Plant Choices for <a href='http://planthardiness.ars.usda.gov'>hardiness zones</a> 5a-6b</p>"); //hardiness zones for Chicago and surrounding area
+                    </script>
                 </figcaption>
             </figure>
         </article>
@@ -65,6 +73,7 @@
             <p>Tinley Xeriscapes &bull; Tinley Park, IL 60477</p>
         </footer>
     </div>
+    <script src="script.js"></script>
 </body>
 
 </html>
