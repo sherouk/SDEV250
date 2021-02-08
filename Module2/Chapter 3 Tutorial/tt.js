@@ -32,7 +32,7 @@ function addCalendarDates() {
         paragraphs = tableCell.getElementsByTagName("p");
         paragraphs[0].innerHTML = i;
         i++;
-    }; while (i <= 31);
+    } while (i <= 31)
 };
 
 // function to place opponent value in
@@ -40,12 +40,15 @@ function addCalendarDates() {
 
 function addGameInfo() {
     let paragraphs = "";
-    for (let i = 0; i < 31; i++) {
+    for (i = 0; i < 31; i++) {
         let date = i + 1;
         let tableCell = document.getElementById("08-" + date);
         paragraphs = tableCell.getElementsByTagName("p");
-        paragraphs[1].innerHTML = opponents[i];
-    };
+        if (gameLocation[i] === "away") {
+            paragraphs[1].innerHTML = "@ ";
+        }
+        paragraphs[1].innerHTML += opponents[i];
+    }
 };
 
 // function to populate calendar
