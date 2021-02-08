@@ -13,3 +13,33 @@ const daysOfWeek = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday",
 const opponents = ["Lightning","Combines", "Combines", "Combines", "Lightning", "Lightning", "Lightning", "Lightning", "Barn Raisers", "Barn Raisers", "Barn Raisers", "Sodbusters", "Sodbusters", "Sodbusters", "Sodbusters", "(off)", "River Riders", "River Riders", "River Riders", "Big Dippers", "Big Dippers", "Big Dippers", "(off)", "Sodbusters", "Sodbusters", "Sodbusters", "Combines", "Combines", "Combines", "(off)", "(off)"];
 const gameLocation = ["away", "away", "away", "away", "home", "home", "home", "home", "home", "home", "home", "away", "away", "away", "away", "", "away", "away", "away", "away", "away", "away", "", "home", "home", "home", "home", "home", "home", "", ""];
 
+// function to place daysOfWeek values in header row cells
+function addColumnHeaders() {
+    let i = 0;
+    while (i < 7) {
+        document.getElementsByTagName("th")[i].innerHTML = daysOfWeek[i];
+        i++;
+    }
+}
+
+// function to place day of month value in first p element 
+// within each table data cell that has an id
+function addCalendarDates() {
+    let i = 1;
+    let paragraphs = "";
+    do {
+        let tableCell = document.getElementById("08-" + i);
+        paragraphs = tableCell.getElementsByTagName("p");
+        paragraphs[0].innerHTML = i;
+        i++;
+    } while (i <= 31);
+}
+
+// function to populate calendar
+function setUpPage() {
+    addColumnHeaders();
+    addCalendarDates();
+}
+
+// run setUpPage() function when page loads
+window.addEventListener("load", setUpPage, false);
