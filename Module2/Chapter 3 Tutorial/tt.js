@@ -19,8 +19,8 @@ function addColumnHeaders() {
     while (i < 7) {
         document.getElementsByTagName("th")[i].innerHTML = daysOfWeek[i];
         i++;
-    }
-}
+    };
+};
 
 // function to place day of month value in first p element 
 // within each table data cell that has an id
@@ -32,14 +32,28 @@ function addCalendarDates() {
         paragraphs = tableCell.getElementsByTagName("p");
         paragraphs[0].innerHTML = i;
         i++;
-    } while (i <= 31);
-}
+    }; while (i <= 31);
+};
+
+// function to place opponent value in
+// second p element within each table data cell that has an id
+
+function addGameInfo() {
+    let paragraphs = "";
+    for (let i = 0; i < 31; i++) {
+        let date = i + 1;
+        let tableCell = document.getElementById("08-" + date);
+        paragraphs = tableCell.getElementsByTagName("p");
+        paragraphs[1].innerHTML = opponents[i];
+    };
+};
 
 // function to populate calendar
 function setUpPage() {
     addColumnHeaders();
     addCalendarDates();
-}
+    addGameInfo();
+};
 
 // run setUpPage() function when page loads
 window.addEventListener("load", setUpPage, false);
