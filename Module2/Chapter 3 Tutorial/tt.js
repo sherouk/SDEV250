@@ -35,7 +35,7 @@ function addCalendarDates() {
     } while (i <= 31)
 };
 
-// function to place opponent value in
+// function to place opponents and gameLocation values in
 // second p element within each table data cell that has an id
 
 function addGameInfo() {
@@ -44,8 +44,24 @@ function addGameInfo() {
         let date = i + 1;
         let tableCell = document.getElementById("08-" + date);
         paragraphs = tableCell.getElementsByTagName("p");
-        if (gameLocation[i] === "away") {
+    /* if (gameLocation[i] === "away") {
             paragraphs[1].innerHTML = "@ ";
+        }
+        if (gameLocation[i] === "home") {
+            paragraphs[1].innerHTML = "vs. ";
+        } */
+    /* if (gameLocation[i] === "away") {
+            paragraphs[1].innerHTML = "@ ";
+        } else if (gameLocation[i] === "home") {
+            paragraphs[1].innerHTML = "vs. ";
+        } */
+        switch (gameLocation[i]) {
+            case "away":
+                paragraphs[1].innerHTML = "@ ";
+                break;
+            case "home":
+                paragraphs[1].innerHTML = "vs. ";
+                break;
         }
         paragraphs[1].innerHTML += opponents[i];
     }
@@ -59,4 +75,9 @@ function setUpPage() {
 };
 
 // run setUpPage() function when page loads
-window.addEventListener("load", setUpPage, false);
+if (window.addEventListener) {
+    window.addEventListener("load", setUpPage, false);
+
+} else if (window.attachEvent) {
+    window.attachEvent("onload", setUpPage);
+};
