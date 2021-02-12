@@ -49,8 +49,68 @@
         <div class="main wrapper clearfix">
 
             <section id="welcome-section" class="welcome-section">
-                <h1>Hey, I'm Sherouk Omara</h1>
-                <h2>software engineer in-the-making</h2>
+                <h1 id="myGreeting"></h1>
+                <h2>I'm Sherouk Omara</h2>
+                <h3>software engineer in-the-making</h3>
+
+                <script>
+                    function greeting() {
+                        const day = new Date();
+                        const n = day.getDay();
+                        if (n === 1) {
+                            document.getElementById("myGreeting").textContent = "Happy Monday!";
+                        } else if (n === 2) {
+                            document.getElementById("myGreeting").textContent = "Happy Tuesday!";
+                        } else if (n === 3) {
+                            document.getElementById("myGreeting").textContent = "Happy Wednesday!";
+                        } else if (n === 4) {
+                            document.getElementById("myGreeting").textContent = "Happy Thursday!";
+                        } else if (n === 5) {
+                            document.getElementById("myGreeting").textContent = "Happy Friday!";
+                        } else {
+                            document.getElementById("myGreeting").textContent = "Happy Weekend!";
+                        };
+                    }
+                    
+                    if (document.addEventListener) {
+                        document.addEventListener("click", greeting(), false);
+                        } else if (document.attachEvent) {
+                        document.attachEvent("onclick", greeting);
+                        };
+                        
+                        /*switch (day) {
+                            case 1:
+                                document.getElementById("myGreeting").textContent = "Happy Monday!";
+                                break;
+                            case 2:
+                                console.log("Happy Tuesday!");
+                                break;
+                            case 3:
+                                console.log("Happy Wednesday!");
+                                break;
+                            case 4:
+                                console.log("Happy Thursday!");
+                                document.getElementById("myGreeting").textContent = "Happy Thursday!";
+                                break;
+                            case 5:
+                                console.log("Happy Friday!");
+                                break;
+                            case 6:
+                                console.log("Happy Weekend!");
+                                break;
+                            case 7:
+                                console.log("Happy Weekend!")
+                                break;
+                            default:
+                                console.log("Hey!");
+                            */    
+                    //};
+                        //document.getElementById("myGreeting").textContent = alert(greeting());
+                    //document.addEventListener("onload", day() {});
+                    //document.getElementById("myGreeting").textContent = alert(day); 
+                    //document.getElementById("email").textContent = alert("You must enter a number. Please try again."); 
+                    //greeting();
+                </script>
             </section>
 
             <section id="projects" class="projects-section">
@@ -117,6 +177,25 @@
             <section id="contact" class="contact-secion">
                 <div class="contact-section-header">
                     <h2>Let's Work Together</h2>
+                    <button id = "button" type="submit" onclick="showEmail()">Click to see my email address</button>
+                    <p id="email"></p>
+                    <script>
+                        //document.getElementById("showEmail").addEventListener("click", function() {
+                            //document.getElementById("email").textContent = somara3@ivytech.edu;
+                        //});
+                        function showEmail() {
+                            let userNum = prompt("First, let's check that you're not a bot. Enter any number: ");
+                            let calc = parseInt(userNum) + 1;
+                            console.log(calc)
+                            if (isNaN(userNum) === false) {
+                               document.getElementById("email").textContent = alert("My email is: somara3@ivytech.edu\nLooking forward to hearing from you!");
+                            }
+                            else {
+                                document.getElementById("email").textContent = alert("You must enter a number. Please try again.");
+                            }
+                        };
+                        //showEmail();
+                    </script>
                 </div>
                 <div class="contact-links">
                     <a href="#" target="_blank" class="btn contact-details" id="profile-link"><i class="fab fa-github"></i>Github</a>
