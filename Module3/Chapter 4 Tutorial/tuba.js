@@ -62,7 +62,27 @@ function verifyCrops() {
 
 /* verify months text box entry is between 1 and 12 */
 function verifyMonths() {
-   testFormCompleteness();
+   let validity = true;
+   let messageText = "";
+
+   try {
+      if (!(monthsBox.value >= 1 && monthsBox.value <= 12)) {
+         throw "Please enter a number of months between 1 and 12."
+      }
+   }
+
+   catch (message) {
+      validity = false;
+      messageText = message;
+      monthsBox.value = "";
+   }
+
+   finally {
+      monthsComplete = validity;
+      messageElement.innerHTML = messageText;
+      messageHeadElement.innerHTML = "";
+      testFormCompleteness();
+   }
 }
 
 /* verify that a fuel option button is selected */
