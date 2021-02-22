@@ -4,8 +4,8 @@
 
  *    Photo gallery
  *    Variables and functions
- *    Author: 
- *    Date:   
+ *    Author: Sherouk Omara
+ *    Date: 2.22.21  
 
  *    Filename: photos.js
  */
@@ -42,6 +42,23 @@ function leftArrow() {
 /* open center figure in separate window */
 function zoomFig() {
    
+}
+
+/* create event listeners for left arrow, right arrow, and center figure element*/
+function createEventListeners() {
+   const leftarrow = document.getElementById("leftarrow");
+   if (leftarrow.addEventListener) {
+      leftarrow.addEventListener("click", leftArrow, false);
+   } else if (leftarrow.attachEvent) {
+      leftarrow.attachEvent("onclick", leftArrow);
+   }
+
+   const rightarrow = document.getElementById("rightarrow");
+   if (rightarrow.addEventListener) {
+      rightarrow.addEventListener("click", rightArrow, false);
+   } else if (rightarrow.attachEvent) {
+      rightarrow.attachEvent("onclick", rightArrow);
+   }
 }
 
 /* create event listeners and populate image elements */
