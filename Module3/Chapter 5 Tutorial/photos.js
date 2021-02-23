@@ -15,6 +15,7 @@
 /* global variables */
 var photoOrder = [1,2,3,4,5]
 var figureCount = 3;
+var autoAdvance = setInterval(rightAdvance, 5000);
 
 /* add src values to img elements based on order specified in photoOrder array*/
 function populateFigures() {
@@ -36,8 +37,14 @@ function populateFigures() {
    }
 }
 
+/* stop automatic image switching and call rightAdvance() function */
+function rightArrow () {
+   clearInterval(autoAdvance);
+   rightAdvance();
+}
+
 /* shift all images one figure to the left, and change values in photoOrder array to match  */
-function rightArrow() {
+function rightAdvance() {
    for (var i = 0; i < 5; i++) {
       if ((photoOrder[i] + 1) === 6) {
          photoOrder[i] = 1
@@ -50,6 +57,8 @@ function rightArrow() {
 
 /* shift all images one figure to the right, and change values in photoOrder array to match  */
 function leftArrow() {
+   clearInterval(autoAdvance);
+   
    for (var i = 0; i < 5; i++) {
       if ((photoOrder[i] - 1) === 0) {
          photoOrder[i] = 5
@@ -127,7 +136,14 @@ function previewThree () {
 
 /* open center figure in separate window */
 function zoomFig() {
-   let zoomWindow = window.open("zoom.htm", "zoomwin", "width=960, height=600");
+   let propertyWidth = 960;
+   let propertyHeight = 600;
+   let winLeft = ((screen.width - propertyWidth)/2);
+   let winTop = ((screen.height - propertyHeight)/2);
+   let winOptions = "width=960, height=600";
+   winOptions += ",left=" + winLeft;
+   winOptions += ",top=" + winTop;
+   let zoomWindow = window.open("zoom.htm", "zoomwin", winOptions);
    zoomWindow.focus();
 }
 
