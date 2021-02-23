@@ -14,16 +14,25 @@
 
 /* global variables */
 var photoOrder = [1,2,3,4,5]
+var figureCount = 3;
 
 /* add src values to img elements based on order specified in photoOrder array*/
 function populateFigures() {
-   let filename
-   let currentFig
+   let filename;
+   let currentFig;
 
-   for (let i = 1; i < 4; i++) {
-      filename = "images/IMG_0" + photoOrder[i] + "sm.jpg"
-      currentFig = document.getElementsByTagName("img") [i - 1]
-      currentFig.src = filename
+   if (figureCount === 3) {
+      for (let i = 1; i < 4; i++) {
+         filename = "images/IMG_0" + photoOrder[i] + "sm.jpg";
+         currentFig = document.getElementsByTagName("img") [i-1];
+         currentFig.src = filename;
+      }
+   } else {
+      for (let i = 0; i < 5; i++) {
+         filename = "images/IMG_0" + photoOrder[i] + "sm.jpg"
+         currentFig = document.getElementsByTagName("img") [i];
+         currentFig.src = filename;
+      }
    }
 }
 
@@ -68,7 +77,8 @@ function previewFive() {
    lastImage.height = "135"
 
    lastFigure.appendChild(lastImage)
-   articleEl.appendChild(lastFigure)
+   //articleEl.appendChild(lastFigure)
+   articleEl.insertBefore(lastFigure, document.getElementById("rightarrow"));
 
    // clone figure element for fifth image and edit to be first image
    let firstFigure = lastFigure.cloneNode(true)
@@ -76,12 +86,49 @@ function previewFive() {
    firstFigure.style.right = ""
    firstFigure.style.left = "45px"
 
-   articleEl.appendChild(firstFigure)
+   //articleEl.appendChild(firstFigure)
+   articleEl.insertBefore(firstFigure, document.getElementById("fig2"));
+   figureCount = 5;
+
+   // add appropriate src values to two new img elements
+   document.getElementsByTagName("img") [0].src = "images/IMG_0" + photoOrder[0] + "sm.jpg";
+   document.getElementsByTagName("img")[4].src = "images/IMG_0" + photoOrder[4] + "sm.jpg";
+
+   // change button to hide extra images
+   let numberButton = document.querySelector("#fiveButton p");
+   numberButton.innerHTML = "Show fewer images";
+   if (numberButton.addEventListener) {
+      numberButton.removeEventListener("click", previewFive, false);
+      numberButton.addEventListener("click", previewThree, false);
+   } else if (numberButton.attachEvent) {
+      numberButton.detachEvent("onclick", previewFive);
+      numberButton.attachEvent("onclick", previewThree);
+   }
 }
+
+/* switch to 3-image layout */
+function previewThree () {
+   let articleEl = document.getElementsByTagName("article") [0];
+   let numberButton = document.querySelector("#fiveButton p");
+
+   articleEl.removeChild(document.getElementById("fig1"));
+   articleEl.removeChild(document.getElementById("fig5"));
+
+   figureCount = 3;
+   numberButton.innerHTML = "Show more images";
+   if (numberButton.addEventListener) {
+      numberButton.removeEventListener("click", previewThree, false);
+      numberButton.addEventListener("click", previewFive, false);
+   } else if (numberButton.attachEvent) {
+      numberButton.detachEvent("onclick", previewThree);
+      numberButton.attachEvent("onclick", previewFive);
+   }
+}   
 
 /* open center figure in separate window */
 function zoomFig() {
-   
+   let zoomWindow = window.open("zoom.htm", "zoomwin", "width=960, height=600");
+   zoomWindow.focus();
 }
 
 /* create event listeners for left arrow, right arrow, and center figure element*/
@@ -105,7 +152,8 @@ function createEventListeners() {
       mainFig.addEventListener("click", zoomFig, false)
    } else if (mainFig.attachEvent) {
       mainFig.attachEvent("onclick", zoomFig)
-   }
+  }
+   
 
    const showAllButton = document.querySelector("#fiveButton p")
    if (showAllButton.addEventListener) {
