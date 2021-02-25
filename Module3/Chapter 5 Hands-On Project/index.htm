@@ -28,7 +28,8 @@
    <article>
       <h2>United States Bill of Rights</h2>
       <h3>Table of Contents</h3>
-      <ul></ul>
+      <ul>
+      </ul>
       <h3 id="1">Amendment I</h3>
       <p>Congress shall make no law respecting an establishment of religion, or prohibiting the free exercise thereof; or abridging the freedom of speech, or of the press; or the right of the people peaceably to assemble, and to petition the Government for a redress of grievances.</p>
       <h3 id="2">Amendment II</h3>
@@ -52,14 +53,32 @@
    </article>
 
    <script>
-      const list = document.querySelectorAll("ul");
+      const list = document.querySelector("ul");
       let headingText;
       let TOCEntry;
-      
-      for (i = 1; i <= 10; i++) {
-         headingText = document.getElementById([i]);
+      //console.log(list);
 
+      function createTOC() {
+         for (i = 1; i <= 10; i++) {
+            headingText = document.getElementById([i]).textContent;
+            //console.log(headingText);
+            TOCEntry = document.createElement("li");
+            TOCEntry.innerHTML = "<a href=#" + i + ">" + headingText + "</a>";
+            //return TOCEntry
+            list.appendChild(TOCEntry);
+            //console.log(TOCEntry);
+         }
       }
+      //createTOC();
+
+      window.addEventListener('load', createTOC, false);
+      window.attachEvent('onload', createTOC);
+
+/*       if (list.addEventListener) {
+         list.addEventListener("load", createTOC, false);
+      } else if (list.attachEvent) {
+         list.attachEvent("onload", createTOC);
+      } */
    </script>
 </body>
 </html>
