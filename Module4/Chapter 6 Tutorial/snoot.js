@@ -74,15 +74,65 @@ function setUpPage() {
     removeSelectDefaults()
     setupDays()
     createEventListeners()
+    generatePlaceholder()
+}
+
+/* remove fallback placeholder text */
+function zeroPlaceholder() {
+    let messageBox = document.getElementById("customText")
+    messageBox.style.color = "black"
+    if (messageBox.value === messageBox.placeholder) {
+        messageBox.value = ""
+    }
+}
+
+/* restore placeholder text if box contains no user entry */
+function checkPlaceholder() {
+    let messageBox = document.getElementById("customText")
+    if (messageBox.value === "") {
+        messageBox.style.color = "rgb(178,184,183)"
+        messageBox.value = messageBox.placeholder
+    }
+}
+
+function generatePlaceholder() {
+    if (!Modernizr.input.placeholder) {
+        let messageBox = document.getElementById("customText")
+        messageBox.value = messageBox.placeholder
+        messageBox.style.color = "rgb(178,184,183)"
+        if (messageBox.addEventListener) {
+            messageBox.addEventListener("focus", zeroPlaceholder, false)
+            messageBox.addEventListener("blur", checkPlaceholder, false)
+        } else if (messageBox.attachEvent) {
+            messageBox.attachEvent("onfocus", zeroPlaceholder)
+            messageBox.attachEvent("onblur", checkPlaceholder)
+        }
+    }
+}
+
+/* automatically check Custom message check box if user makes entry in customText box */
+function autoCheckCustom() {
+    let messageBox = document.getElementById("customText")
+    if (messageBox.value !== "" && messageBox.value !== messageBox.placeholder) {
+        // if user entry in textarea, check Custom check box
+        document.getElementById("custom").checked = "checked"
+    }
 }
  
 /* create event listeners */
 function createEventListeners() {
-    var deliveryMonth = document.getElementById("delivMo")
+    const deliveryMonth = document.getElementById("delivMo")
     if (deliveryMonth.addEventListener) {
         deliveryMonth.addEventListener("change", updateDays, false)
     } else if (deliveryMonth.attachEvent) {
         deliveryMonth.attachEvent("onchange", updateDays)
+    }
+
+    const messageBox = document.getElementById("customText")
+    if (messageBox.addEventListener) {
+        messageBox.addEventListener("blur", autocheckCustom, false)
+    } else if (messageBox.attachEvent) {
+        messageBox.attachEvent("onblur", autocheckCustom)
     }
 }
 
