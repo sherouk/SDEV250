@@ -88,6 +88,34 @@ function displayCalendar (whichMonth) {
   }
 }
 
+function selectDate(event) {
+    if (event === undefined) {
+        // get caller element in IE8
+        event = window.event
+    }
+    
+    let callerElement = event.target || event.srcElement
+
+    if (callerElement.textContent === "") {
+        // call contains no date, so don't close the calendar
+        document.getElementById("cal").style.display = "block"
+        retrurn false
+    }
+
+    dateObject.setDate(callerElement.textContent)
+
+    let fullDateToday = new Date()
+    let dateToday = Date.UTC(fullDateToday.getFullYear()),
+        fullDateToday.getMonth(), fullDateToday.getDate()
+    let selectedDate = Date.UTC(dateObject.getFullYear(), dateObject.getMonth(), dateObject.getDate())
+    if (selectedDate <= dateToday) {
+        document.getElementById("cal").style.display = "block"
+        return false
+    }
+
+    document.getElementById("tripDate").value = dateObject.toLocaleDateString()
+}
+
 function createEventListeners() {
     const dateField = document.getElementById("tripDate")
         if (dateField.addEventListener) {
@@ -95,6 +123,17 @@ function createEventListeners() {
         } else if (dateField.attachEvent) {
             dateField.attachEvent("onclick", displayCalendar)
         }
+    
+    const dateCells = document.getElementsByTagName("td")
+    if (dateCells[0].addEventListener) {
+        for (let i = 0; i < dateCells.length; i++) {
+            dateCells[i].addEventListener("click", selectDate, false)
+        }
+    } else if (dateCells[0].attachEvent) {
+        for (let i = 0; i < dateCells.length; i++) {
+            dateCells[i].attachEvent("onclick", selectDate)
+        }
+    }
 }
 
 if (window.addEventListener) {
