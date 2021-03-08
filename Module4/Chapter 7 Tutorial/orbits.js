@@ -15,7 +15,7 @@ const dateObject = new Date()
 
 function displayCalendar (whichMonth) {
   let date
-  let dateToday = new Date()
+  const dateToday = new Date()
   let dayOfWeek
   let daysInMonth
   let dateCells
@@ -39,11 +39,11 @@ function displayCalendar (whichMonth) {
   document.querySelector('#cal table caption').textContent = captionValue
 
   if (month === 0 || month === 2 || month === 4 || month === 6 ||
-    month === 7 || month === 9 || month === 11) { 
+    month === 7 || month === 9 || month === 11) {
     // Jan,Mar,May,Jul,Aug,Oct,Dec
     daysInMonth = 31
-  } else if (month === 1) { 
-      // Feb
+  } else if (month === 1) {
+    // Feb
     if (year % 4 === 0) { // leap year test
       if (year % 100 === 0) {
         // year ending in 00 not a leap year unless divisible by 400
@@ -88,56 +88,69 @@ function displayCalendar (whichMonth) {
   }
 }
 
-function selectDate(event) {
-    if (event === undefined) {
-        // get caller element in IE8
-        event = window.event
-    }
-    
-    let callerElement = event.target || event.srcElement
+function selectDate (event) {
+  if (event === undefined) {
+    // get caller element in IE8
+    event = window.event
+  }
 
-    if (callerElement.textContent === "") {
-        // call contains no date, so don't close the calendar
-        document.getElementById("cal").style.display = "block"
-        retrurn false
-    }
+  const callerElement = event.target || event.srcElement
 
-    dateObject.setDate(callerElement.textContent)
+  if (callerElement.textContent === '') {
+    // call contains no date, so don't close the calendar
+    document.getElementById('cal').style.display = 'block'
+    return false
+  }
 
-    let fullDateToday = new Date()
-    let dateToday = Date.UTC(fullDateToday.getFullYear()),
-        fullDateToday.getMonth(), fullDateToday.getDate()
-    let selectedDate = Date.UTC(dateObject.getFullYear(), dateObject.getMonth(), dateObject.getDate())
-    if (selectedDate <= dateToday) {
-        document.getElementById("cal").style.display = "block"
-        return false
-    }
+  dateObject.setDate(callerElement.textContent)
 
-    document.getElementById("tripDate").value = dateObject.toLocaleDateString()
+  const fullDateToday = new Date()
+  const dateToday = Date.UTC(fullDateToday.getFullYear(),
+    fullDateToday.getMonth(), fullDateToday.getDate())
+  const selectedDate = Date.UTC(dateObject.getFullYear(), dateObject.getMonth(), dateObject.getDate())
+  if (selectedDate <= dateToday) {
+    document.getElementById('cal').style.display = 'block'
+    return false
+  }
+
+  document.getElementById('tripDate').value = dateObject.toLocaleDateString()
+  hideCalendar()
 }
 
-function createEventListeners() {
-    const dateField = document.getElementById("tripDate")
-        if (dateField.addEventListener) {
-            dateField.addEventListener("click", displayCalendar, false)
-        } else if (dateField.attachEvent) {
-            dateField.attachEvent("onclick", displayCalendar)
-        }
-    
-    const dateCells = document.getElementsByTagName("td")
-    if (dateCells[0].addEventListener) {
-        for (let i = 0; i < dateCells.length; i++) {
-            dateCells[i].addEventListener("click", selectDate, false)
-        }
-    } else if (dateCells[0].attachEvent) {
-        for (let i = 0; i < dateCells.length; i++) {
-            dateCells[i].attachEvent("onclick", selectDate)
-        }
+function hideCalendar() {
+    document.getElementById("cal").style.display = "none"
+
+}
+
+function createEventListeners () {
+  const dateField = document.getElementById('tripDate')
+  if (dateField.addEventListener) {
+    dateField.addEventListener('click', displayCalendar, false)
+  } else if (dateField.attachEvent) {
+    dateField.attachEvent('onclick', displayCalendar)
+  }
+
+  const dateCells = document.getElementsByTagName('td')
+  if (dateCells[0].addEventListener) {
+    for (let i = 0; i < dateCells.length; i++) {
+      dateCells[i].addEventListener('click', selectDate, false)
     }
+  } else if (dateCells[0].attachEvent) {
+    for (let i = 0; i < dateCells.length; i++) {
+      dateCells[i].attachEvent('onclick', selectDate)
+    }
+  }
+
+  const closeButton = document.getElementById("close")
+  if (closeButton.addEventListener) {
+      closeButton.addEventListener("click", hideCalendar, false)
+  } else if (closeButton.attachEvent) {
+      closeButton.attachEvent("onclick", hideCalendar)
+  }
 }
 
 if (window.addEventListener) {
-    window.addEventListener("load", createEventListeners, false)
+  window.addEventListener('load', createEventListeners, false)
 } else if (window.attachEvent) {
-    window.attachEvent("onload", createEventListeners)
+  window.attachEvent('onload', createEventListeners)
 }
