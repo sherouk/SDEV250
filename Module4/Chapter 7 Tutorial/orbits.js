@@ -115,11 +115,41 @@ function selectDate (event) {
 
   document.getElementById('tripDate').value = dateObject.toLocaleDateString()
   hideCalendar()
+  updateTotalCost()
 }
 
 function hideCalendar() {
     document.getElementById("cal").style.display = "none"
+}
 
+function prevMo() {
+    displayCalendar(-1)
+}
+
+function nextMo() {
+    displayCalendar(1)
+}
+
+function updateTotalCost() {
+    let totalCost = 250000
+    let monthlyCost = totalCost/60
+    let shortMonthlyCost = monthlyCost.toFixed(0)
+
+    document.getElementById("singleLabel").textContent = "Single payment of $" + totalCost.toLocaleString()
+    document.getElementById("multipleLabel").textContent = "60 monthly payments of $" + shortMonthlyCost.toLocaleString()
+}
+
+function updateCountdown() {
+    const dateToday = new Date()
+    const dateFrom = Date.UTC(dateToday.getFullYear(), dateToday.getMonth(), dateToday.getDate(), dateToday.getHours(), dateToday.getMinutes(), dateToday.getSeconds())
+    const dateTo = Date.UTC(dateObject.getFullYear(), dateObject.getMonth(), dateObject.getDate(), 19,0,0) // all launches at 8:00pm UTC
+    
+    // days
+    let daysUntil = Math.floor((dateTo - dateFrom) / 86400000)
+    document.getElementById("countdown").textContent = daysUntil
+
+    // hours
+    
 }
 
 function createEventListeners () {
@@ -147,6 +177,17 @@ function createEventListeners () {
   } else if (closeButton.attachEvent) {
       closeButton.attachEvent("onclick", hideCalendar)
   }
+
+    let prevLink = document.getElementById('prev')
+    let nextLink = document.getElementById("next")
+    if (prevLink.addEventListener) {
+        prevLink.addEventListener("click", prevMo, false)
+        nextLink.addEventListener("click", nextMo, false)
+    } else if (prevLink.attachEvent) {
+        prevLink.attachEvent("onclick", prevMo)
+        nextLink.attachEvent("onclick", nextMo)
+    }
+
 }
 
 if (window.addEventListener) {
