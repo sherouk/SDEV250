@@ -6,8 +6,8 @@
       Chapter 7
       Hands-on Project 7-2
 
-      Author: 
-      Date:   
+      Author: Sherouk Omara
+      Date: 3.14.21  
 
       Filename: index.htm
    -->
@@ -43,5 +43,42 @@
           </fieldset>
      </form>
    </article>
+   <script>
+      let selection = document.getElementById("dateSelected");
+      let result = document.getElementById("day");
+      let allDaysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+      let selectedDate;
+      let dayOfWeekNumber;
+      let dayOfWeekName;
+
+      function lookUpDay() {
+         selectedDate = newDate(selection.value);
+         selectedDate.setUTCHours(12);
+         dayOfWeekNumber = selectedDate.getUTCDay();
+         dayOfWeekName = allDaysOfWeek[dayOfWeekNumber];
+         result.innerHTML = dayOfWeekName;
+      }
+
+      // add event listener to Find day button and clear form
+      function createEventListener() {
+         var submitButton = document.getElementById("determineDay");
+         if (submitButton.addEventListener) {
+            submitButton.addEventListener("click", lookUpDay, false);
+         } else if (submitButton.attachEvent) {
+            submitButton.attachEvent("onclick", lookUpDay);
+         }
+         document.getElementById("dateSelected").value = "";
+         // clear last starting value on reload
+
+         document.getElementById("day").innerHTML = "";
+         // clear previous results on reload
+      }
+
+      if (window.addEventListener) {
+         window.addEventListener("load", createEventListener, false)
+      } else if (window.attachEvent) {
+         window.attachEvent("onload", createEventListener)
+      }
+   </script>
 </body>
 </html>
