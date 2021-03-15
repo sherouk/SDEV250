@@ -14,11 +14,9 @@ Filename: orbits.js
 const dateObject = new Date()
 const countdown;
 const ticket = {
-  date:"",
-  passengers: {
-    fName: "",
-    lName: ""
-  }
+  passengersOnTicket: 0,
+  passengers: {},
+  calcCost: updateTotalCost
 }
 
 function displayCalendar (whichMonth) {
@@ -145,7 +143,7 @@ function nextMo () {
 }
 
 function updateTotalCost () {
-  const totalCost = 250000
+  const totalCost = this.passengersOnTicket * 25000
   const monthlyCost = totalCost / 60
   const shortMonthlyCost = monthlyCost.toFixed(0)
 
@@ -195,6 +193,12 @@ function updateCountdown () {
 functionregisterName() {
   let passengerList = document.getElementById("passengers");
   let passengerName = document.createElement("li");
+  let newFnameProp;
+  let newLnameProp;
+
+  ticket.passengersOnTicket += 1;
+  newFnameProp = "fname" + ticket.passengersOnTicket;
+  newLnameProp = "lname" + ticket.passengersOnTicket;
 
   ticket.passengers.fName = document.getElementById("fname").value;
   ticket.passengers.lName = document.getElementById("lname").value;
