@@ -12,6 +12,14 @@ Filename: orbits.js
 'use strict' // interprets contents in JavaScript strict mode
 
 const dateObject = new Date()
+const countdown;
+const ticket = {
+  date:"",
+  passengers: {
+    fName: "",
+    lName: ""
+  }
+}
 
 function displayCalendar (whichMonth) {
   let date
@@ -116,41 +124,96 @@ function selectDate (event) {
   document.getElementById('tripDate').value = dateObject.toLocaleDateString()
   hideCalendar()
   updateTotalCost()
+  countdown = setInterval(updateCountdown, 1000)
+  document.getElementById("countdownSection").style.display = "block"
+
+  ticket.date = dateObject.toLocaleDateString();
+  document.getElementById("selectedDate").innerHTML = ticket.date;
+  document.getElementById("dateSection").style.display = "block";
 }
 
-function hideCalendar() {
-    document.getElementById("cal").style.display = "none"
+function hideCalendar () {
+  document.getElementById('cal').style.display = 'none'
 }
 
-function prevMo() {
-    displayCalendar(-1)
+function prevMo () {
+  displayCalendar(-1)
 }
 
-function nextMo() {
-    displayCalendar(1)
+function nextMo () {
+  displayCalendar(1)
 }
 
-function updateTotalCost() {
-    let totalCost = 250000
-    let monthlyCost = totalCost/60
-    let shortMonthlyCost = monthlyCost.toFixed(0)
+function updateTotalCost () {
+  const totalCost = 250000
+  const monthlyCost = totalCost / 60
+  const shortMonthlyCost = monthlyCost.toFixed(0)
 
-    document.getElementById("singleLabel").textContent = "Single payment of $" + totalCost.toLocaleString()
-    document.getElementById("multipleLabel").textContent = "60 monthly payments of $" + shortMonthlyCost.toLocaleString()
+  document.getElementById('singleLabel').textContent = 'Single payment of $' + totalCost.toLocaleString()
+  document.getElementById('multipleLabel').textContent = '60 monthly payments of $' + shortMonthlyCost.toLocaleString()
 }
 
-function updateCountdown() {
-    const dateToday = new Date()
-    const dateFrom = Date.UTC(dateToday.getFullYear(), dateToday.getMonth(), dateToday.getDate(), dateToday.getHours(), dateToday.getMinutes(), dateToday.getSeconds())
-    const dateTo = Date.UTC(dateObject.getFullYear(), dateObject.getMonth(), dateObject.getDate(), 19,0,0) // all launches at 8:00pm UTC
+function updateCountdown () {
+  const dateToday = new Date()
+  const dateFrom = Date.UTC(dateToday.getFullYear(), dateToday.getMonth(), dateToday.getDate(), dateToday.getHours(), dateToday.getMinutes(), dateToday.getSeconds())
+  const dateTo = Date.UTC(dateObject.getFullYear(), dateObject.getMonth(), dateObject.getDate(), 19, 0, 0) // all launches at 8:00pm UTC
+
+  if ((dateTo - dateFrom) < 1000) { // time will be less than 0 when setInterval runs next
+    clearInterval(countdown);
+    document.getElementById("countdownSection").style.display ="none";
+  }
+
+  // days
+  const daysUntil = Math.floor((dateTo - dateFrom) / 86400000)
+  document.getElementById('countdown').textContent = daysUntil
+
+  // hours
+  const fractionalDay = (dateTo - dateFrom) % 86400000
+    let hoursUntil = Math.floor(fractionalDay / 3600000)
+    if (hoursUntil < 10) {
+    hoursUntil = '0' + hoursUntil
+    }
+  document.getElementById('countdown').innerHTML += ':' + hoursUntil
     
-    // days
-    let daysUntil = Math.floor((dateTo - dateFrom) / 86400000)
-    document.getElementById("countdown").textContent = daysUntil
+    // minutes
+    let fractionalHour = fractionalDay % 3600000
+    let minutesUntil = Math.floor(fractionalHour / 60000)
+    if (minutesUntil < 10) {
+    minutesUntil = '0' + minutesUntil
+    }
+  document.getElementById('countdown').innerHTML += ':' + minutesUntil
 
-    // hours
-    
+  // seconds
+  let fractionalMinute = fractionalHour % 60000;
+  let secondsUntil = Math.floor(fractionalMinute / 1000);
+  if (secondsUntil < 10) {
+    secondsUntil = "0" + secondsUntil;
+  }
+  document.getElementById("countdown").innerHTML += ":" + secondsUntil;
 }
+
+functionregisterName() {
+  let passengerList = document.getElementById("passengers");
+  let passengerName = document.createElement("li");
+
+  ticket.passengers.fName = document.getElementById("fname").value;
+  ticket.passengers.lName = document.getElementById("lname").value;
+
+  // add entered name to passenger list in ticket section
+  passengerName.innerHTML = ticket.passengers.fName + " " + ticket.passengers.lName;
+  passengerList.appendChild(passengerName);
+
+  // clear first and last names from form
+  document.getElementById("fname").value ="";
+  document.getElementById("lname").value ="";
+  
+  // display ticket and passengers section
+  document.getElementById("ticket").style.display ="block";
+  document.getElementById("passengersSection").style.display = "block";
+  
+  // return focus to First Name field to facilitate entry of another passenger name
+  document.getElementById("fname").focus();
+}  
 
 function createEventListeners () {
   const dateField = document.getElementById('tripDate')
@@ -171,23 +234,29 @@ function createEventListeners () {
     }
   }
 
-  const closeButton = document.getElementById("close")
+  const closeButton = document.getElementById('close')
   if (closeButton.addEventListener) {
-      closeButton.addEventListener("click", hideCalendar, false)
+    closeButton.addEventListener('click', hideCalendar, false)
   } else if (closeButton.attachEvent) {
-      closeButton.attachEvent("onclick", hideCalendar)
+    closeButton.attachEvent('onclick', hideCalendar)
   }
 
-    let prevLink = document.getElementById('prev')
-    let nextLink = document.getElementById("next")
-    if (prevLink.addEventListener) {
-        prevLink.addEventListener("click", prevMo, false)
-        nextLink.addEventListener("click", nextMo, false)
-    } else if (prevLink.attachEvent) {
-        prevLink.attachEvent("onclick", prevMo)
-        nextLink.attachEvent("onclick", nextMo)
-    }
+  const prevLink = document.getElementById('prev')
+  const nextLink = document.getElementById('next')
+  if (prevLink.addEventListener) {
+    prevLink.addEventListener('click', prevMo, false)
+    nextLink.addEventListener('click', nextMo, false)
+  } else if (prevLink.attachEvent) {
+    prevLink.attachEvent('onclick', prevMo)
+    nextLink.attachEvent('onclick', nextMo)
+  }
 
+  var nameButton = document.getElementById("addName");
+  if (nameButton.addEventListener) {
+    nameButton.addEventListener("click", registerName, false);
+  } else if (nameButton.attachEvent) {
+    nameButton.attachEvent("onclick", registerName);
+  }
 }
 
 if (window.addEventListener) {
