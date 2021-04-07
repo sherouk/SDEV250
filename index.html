@@ -1,85 +1,106 @@
-<!doctype html>
+<!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
 <!--[if gt IE 8]><!-->
 <html class="no-js" lang="en">
-<!--<![endif]-->
+  <!--<![endif]-->
 
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <title>Sherouk Omara</title>
-    <meta name="description" content="personal portfolio">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="js/main.js"></script>
+    <meta name="description" content="personal portfolio" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!-- <link rel="apple-touch-icon" href="apple-touch-icon.png"> -->
-    <link rel="stylesheet" href="css/normalize.min.css">
-    <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous"/>
-    <link href="https://fonts.googleapis.com/css?family=Poppins:200i,300,400&display=swap" rel="stylesheet"/>
-    <link href="https://fonts.googleapis.com/css?family=Raleway:700&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="css/normalize.min.css" />
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/main.css" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+      integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins:200i,300,400&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Raleway:700&display=swap"
+      rel="stylesheet"
+    />
 
     <!--[if lt IE 9]>
-            <script src="js/vendor/html5-3.6-respond-1.4.2.min.js"></script>
-        <![endif]-->
-</head>
+      <script src="js/vendor/html5-3.6-respond-1.4.2.min.js"></script>
+    <![endif]-->
+  </head>
 
-<body>
+  <body>
     <!--[if lt IE 8]>
-            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
+      <p class="browserupgrade">
+        You are using an <strong>outdated</strong> browser. Please
+        <a href="http://browsehappy.com/">upgrade your browser</a> to improve
+        your experience.
+      </p>
+    <![endif]-->
 
     <div class="header-container">
-        <header class="wrapper clearfix">
-            <h1 class="title">SHEROUK OMARA</h1>
-            <nav id="navbar" class="nav">
-                <ul class="nav-list">
-                    <li><a href="#welcome-section">Home</a></li>
-                    <li><a href="#projects">Projects</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#resume">Resume</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                    <li><a href="#web-security">Web Security</a></li>
-                </ul>
-            </nav>
-        </header>
+      <header class="wrapper clearfix">
+        <h1 class="title">SHEROUK OMARA</h1>
+        <nav id="navbar" class="nav">
+          <ul class="nav-list">
+            <li><a href="#welcome-section">Home</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#resume">Resume</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="#web-security">Web Security</a></li>
+          </ul>
+        </nav>
+      </header>
     </div>
 
     <div class="main-container">
-        <div class="main wrapper clearfix">
+      <div class="main wrapper clearfix">
+        <section id="welcome-section" class="welcome-section">
+          <h1 id="myGreeting"></h1>
+          <h2>I'm Sherouk Omara</h2>
+          <h3>software engineer in-the-making</h3>
 
-            <section id="welcome-section" class="welcome-section">
-                <h1 id="myGreeting"></h1>
-                <h2>I'm Sherouk Omara</h2>
-                <h3>software engineer in-the-making</h3>
+          <script>
+            function greeting() {
+              const day = new Date();
+              const n = day.getDay();
+              if (n === 1) {
+                document.getElementById("myGreeting").textContent =
+                  "Happy Monday!";
+              } else if (n === 2) {
+                document.getElementById("myGreeting").textContent =
+                  "Happy Tuesday!";
+              } else if (n === 3) {
+                document.getElementById("myGreeting").textContent =
+                  "Happy Wednesday!";
+              } else if (n === 4) {
+                document.getElementById("myGreeting").textContent =
+                  "Happy Thursday!";
+              } else if (n === 5) {
+                document.getElementById("myGreeting").textContent =
+                  "Happy Friday!";
+              } else {
+                document.getElementById("myGreeting").textContent =
+                  "Happy Weekend!";
+              }
+            }
 
-                <script>
-                    function greeting() {
-                        const day = new Date();
-                        const n = day.getDay();
-                        if (n === 1) {
-                            document.getElementById("myGreeting").textContent = "Happy Monday!";
-                        } else if (n === 2) {
-                            document.getElementById("myGreeting").textContent = "Happy Tuesday!";
-                        } else if (n === 3) {
-                            document.getElementById("myGreeting").textContent = "Happy Wednesday!";
-                        } else if (n === 4) {
-                            document.getElementById("myGreeting").textContent = "Happy Thursday!";
-                        } else if (n === 5) {
-                            document.getElementById("myGreeting").textContent = "Happy Friday!";
-                        } else {
-                            document.getElementById("myGreeting").textContent = "Happy Weekend!";
-                        };
-                    }
-                    
-                    if (document.addEventListener) {
-                        document.addEventListener("click", greeting(), false);
-                        } else if (document.attachEvent) {
-                        document.attachEvent("onclick", greeting);
-                        };
-                        
-                        /*switch (day) {
+            if (document.addEventListener) {
+              document.addEventListener("click", greeting(), false);
+            } else if (document.attachEvent) {
+              document.attachEvent("onclick", greeting);
+            }
+
+            /*switch (day) {
                             case 1:
                                 document.getElementById("myGreeting").textContent = "Happy Monday!";
                                 break;
@@ -104,158 +125,256 @@
                                 break;
                             default:
                                 console.log("Hey!");
-                            */    
-                    //};
-                        //document.getElementById("myGreeting").textContent = alert(greeting());
-                    //document.addEventListener("onload", day() {});
-                    //document.getElementById("myGreeting").textContent = alert(day); 
-                    //document.getElementById("email").textContent = alert("You must enter a number. Please try again."); 
-                    //greeting();
-                </script>
-            </section>
+                            */
+            //};
+            //document.getElementById("myGreeting").textContent = alert(greeting());
+            //document.addEventListener("onload", day() {});
+            //document.getElementById("myGreeting").textContent = alert(day);
+            //document.getElementById("email").textContent = alert("You must enter a number. Please try again.");
+            //greeting();
+          </script>
+        </section>
 
-            <section id="projects" class="projects-section">
-                <h1 id="projects-section-header">My Projects</h1>
-                    <div class="projects-grid">
-                        <a href="#" target="_blank" class="project project-tile">
-                            <img class="project-image" src="#" alt="project">
-                            <p class="project-title">
-                                <span class="code">&lt;</span>
-                                Project One
-                                <span class="code">&#47;&gt;</span>
-                            </p> 
-                        </a>
-                        
-                        <a href="#" target="_blank" class="project project-tile">
-                            <img class="project-image" src="#" alt="project">
-                            <p class="project-title">
-                                <span class="code">&lt;</span>
-                                Project Two
-                                <span class="code">&#47;&gt;</span>
-                            </p>
-                        </a>
+        <section id="projects" class="projects-section">
+          <h1 id="projects-section-header">My Projects</h1>
+          <div class="projects-grid">
+            <a href="#" target="_blank" class="project project-tile">
+              <img class="project-image" src="#" alt="project" />
+              <p class="project-title">
+                <span class="code">&lt;</span>
+                Project One
+                <span class="code">&#47;&gt;</span>
+              </p>
+            </a>
 
-                        <a href="#" target="_blank" class="project project-tile">
-                            <img class="project-image" src="#" alt="project">
-                            <p class="project-title">
-                                <span class="code">&lt;</span>
-                                Project Three
-                                <span class="code">&#47;&gt;</span>
-                            </p>
-                        </a>
+            <a href="#" target="_blank" class="project project-tile">
+              <img class="project-image" src="#" alt="project" />
+              <p class="project-title">
+                <span class="code">&lt;</span>
+                Project Two
+                <span class="code">&#47;&gt;</span>
+              </p>
+            </a>
 
-                        <a href="#" target="_blank" class="project project-tile">
-                            <img class="project-image" src="#" alt="project">
-                            <p class="project-title">
-                                <span class="code">&lt;</span>
-                                Project Four
-                                <span class="code">&#47;&gt;</span>
-                            </p>
-                        </a>
-                    </div>
-            </section>
+            <a href="#" target="_blank" class="project project-tile">
+              <img class="project-image" src="#" alt="project" />
+              <p class="project-title">
+                <span class="code">&lt;</span>
+                Project Three
+                <span class="code">&#47;&gt;</span>
+              </p>
+            </a>
 
-            <section id="about" class="about-section">
-                <div class="about-section-header">
-                    <h1>About Me</h1>
-                </div>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sodales urna non odio egestas
-                tempor. Nunc vel vehicula ante. Etiam bibendum iaculis libero, eget molestie nisl pharetra in.
-                In semper consequat est, eu porta velit mollis nec.</p>
-            </section>
+            <a href="#" target="_blank" class="project project-tile">
+              <img class="project-image" src="#" alt="project" />
+              <p class="project-title">
+                <span class="code">&lt;</span>
+                Project Four
+                <span class="code">&#47;&gt;</span>
+              </p>
+            </a>
+          </div>
+        </section>
 
-            <section id="resume" class="resume-section">
-                <div class="resume-section-header">
-                    <h1>Resume</h1>
-                </div>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sodales urna non odio egestas
-                tempor. Nunc vel vehicula ante. Etiam bibendum iaculis libero, eget molestie nisl pharetra in.
-                In semper consequat est, eu porta velit mollis nec. Curabitur posuere enim eget turpis feugiat
-                tempor. Etiam ullamcorper lorem dapibus velit suscipit ultrices. Proin in est sed erat facilisis
-                pharetra.</p>
-            </section>
+        <section id="about" class="about-section">
+          <div class="about-section-header">
+            <h1>About Me</h1>
+          </div>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
+            sodales urna non odio egestas tempor. Nunc vel vehicula ante. Etiam
+            bibendum iaculis libero, eget molestie nisl pharetra in. In semper
+            consequat est, eu porta velit mollis nec.
+          </p>
+        </section>
 
-            <section id="contact" class="contact-secion">
-                <div class="contact-section-header">
-                    <h2>Let's Work Together</h2>
-                    <button id = "button" type="submit" onclick="showEmail()">Click to see my email address</button>
-                    <p id="email"></p>
-                    <script>
-                        //document.getElementById("showEmail").addEventListener("click", function() {
-                            //document.getElementById("email").textContent = somara3@ivytech.edu;
-                        //});
-                        function showEmail() {
-                            let userNum = prompt("First, let's check that you're not a bot. Enter any number: ");
-                            let calc = parseInt(userNum) + 1;
-                            console.log(calc)
-                            if (isNaN(userNum) === false) {
-                               document.getElementById("email").textContent = alert("My email is: somara3@ivytech.edu\nLooking forward to hearing from you!");
-                            }
-                            else {
-                                document.getElementById("email").textContent = alert("You must enter a number. Please try again.");
-                            }
+        <section id="resume" class="resume-section">
+          <div class="resume-section-header">
+            <h1>Resume</h1>
+          </div>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
+            sodales urna non odio egestas tempor. Nunc vel vehicula ante. Etiam
+            bibendum iaculis libero, eget molestie nisl pharetra in. In semper
+            consequat est, eu porta velit mollis nec. Curabitur posuere enim
+            eget turpis feugiat tempor. Etiam ullamcorper lorem dapibus velit
+            suscipit ultrices. Proin in est sed erat facilisis pharetra.
+          </p>
+        </section>
+
+        <section id="contact" class="contact-secion">
+          <div class="contact-section-header">
+            <h2>Let's Work Together</h2>
+            <button id="button" type="submit" onclick="showEmail()">
+              Click to see my email address
+            </button>
+            <p id="email"></p>
+            <script>
+              //document.getElementById("showEmail").addEventListener("click", function() {
+              //document.getElementById("email").textContent = somara3@ivytech.edu;
+              //});
+              function showEmail() {
+                let userNum = prompt(
+                  "First, let's check that you're not a bot. Enter any number: "
+                );
+                let calc = parseInt(userNum) + 1;
+                console.log(calc);
+                if (isNaN(userNum) === false) {
+                  document.getElementById("email").textContent = alert(
+                    "My email is: somara3@ivytech.edu\nLooking forward to hearing from you!"
+                  );
+                } else {
+                  document.getElementById("email").textContent = alert(
+                    "You must enter a number. Please try again."
+                  );
+                }
+              }
+              //showEmail();
+            </script>
+          </div>
+
+          <div class="_form_11"></div>
+          <script
+            src="https://sheroukandco.activehosted.com/f/embed.php?id=11"
+            type="text/javascript"
+            charset="utf-8"
+          >
+            try {
+                let fullName = document.getElementsByName("name").value;
+                if (fullName === "") {
+                    throw "Please enter your name.";
+                }
+            }
+          </script>
+
+          <div class="contact-links">
+            <a
+              href="#"
+              target="_blank"
+              class="btn contact-details"
+              id="profile-link"
+              ><i class="fab fa-github"></i>Github</a
+            >
+            <a
+              href="#"
+              target="_blank"
+              class="btn contact-details"
+              id="linkedin-link"
+              ><i class="fab fa-linkedin"></i>LinkedIn</a
+            >
+            <a
+              href="#"
+              target="_blank"
+              class="btn contact-details"
+              id="email-link"
+              ><i class="fas fa-at"></i>Email</a
+            >
+          </div>
+          <p>------------------</p>
+        </section>
+
+        <section id="web-security" class="web-security-section">
+          <div class="web-security-section-header">
+            <h2>Web Security</h2>
+          </div>
+          <p>
+            This is some of the information about your computer that any web
+            application can access:
+          </p>
+          <ol>
+            <li>
+              availHeight
+              <p>
+                Height of the display screen, not including operating system
+                features such as the Windows taskbar
+              </p>
+            </li>
+            <li>
+              availWidth
+              <p>
+                Width of the display screen, not including operating system
+                features such as the Windows taskbar
+              </p>
+            </li>
+            <li>
+              colorDepth
+              <p>
+                Display screen’s bit depth if a color palette is in use; if a
+                color palette is not in use, returns the value of the pixelDepth
+                property
+              </p>
+            </li>
+            <li>
+              pixelDepth
+              <p>Display screen’s color resolution in bits per pixel</p>
+            </li>
+            <li>
+              height
+              <p>Height of the display screen</p>
+            </li>
+            <li>
+              width
+              <p>Width of the display screen</p>
+            </li>
+          </ol>
+
+          <p>Here are some resources to learn about browsing the web safely</p>
+          <ul>
+            <li>
+              <a
+                href="https://www.getsafeonline.org/protecting-your-computer/safe-internet-use/"
+                target="blank"
+                >https://www.getsafeonline.org/protecting-your-computer/safe-internet-use/</a
+              >
+              <p>
+                This article summarizes key steps to take when browsing the web
+                divided into important categories, like secure websites,
+                cookies, and safe use of common browsers.
+              </p>
+            </li>
+            <li>
+              <a
+                href="https://usa.kaspersky.com/resource-center/preemptive-safety/top-10-internet-safety-rules-and-what-not-to-do-online"
+                target="blank"
+                >https://usa.kaspersky.com/resource-center/preemptive-safety/top-10-internet-safety-rules-and-what-not-to-do-online</a
+              >
+              <p>
+                This article lists 10 important rules to follow in order to stay
+                safe online, including tightening privacy settings, using a VPN
+                if you can, and choosing strong passwords.
+              </p>
+            </li>
+            <li>
+              <a
+                href="https://us.norton.com/internetsecurity-kids-safety-stop-stressing-10-internet-safety-rules-to-help-keep-your-family-safe-online.html"
+                target="blank"
+                >https://us.norton.com/internetsecurity-kids-safety-stop-stressing-10-internet-safety-rules-to-help-keep-your-family-safe-online.html</a
+              >
+              <p>
+                This article provides various Internet safety checklists for
+                different groups of people, such as children, teens, parents,
+                and the whole family.
+              </p>
+            </li>
+          </ul>
+          <div id="map">
+            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCeQ4RbD9pCr_JiN0CNz037ECDWsRxbzOg&callback=initMap&libraries=&v=weekly"
+                async
+            ></script>
+            <!--<script src="https://maps.googleapis.com/maps/api/js?v=3.exp   &sensor=true"></script> -->
+            <!-- <script>
+                        let currPosLat = position.coords.latitude;
+                        let currPosLng = position.coords.longitude;
+                        let mapOptions = {
+                            center: new google.maps.LatLng(currPosLat, currPosLng),
+                            zoom: 11
                         };
-                        //showEmail();
-                    </script>
-                </div>
-                
-                <div class="_form_11"></div>
-                <script src="https://sheroukandco.activehosted.com/f/embed.php?id=11" type="text/javascript" charset="utf-8">
-                    try {
-                        let fullName = document.getElementsByName("name").value;
-                        if (fullName === "") {
-                            throw "Please enter your name.";
-                        }
-                    }
-                </script>
-                
-                <div class="contact-links">
-                    <a href="#" target="_blank" class="btn contact-details" id="profile-link"><i class="fab fa-github"></i>Github</a>
-                    <a href="#" target="_blank" class="btn contact-details" id="linkedin-link"><i class="fab fa-linkedin"></i>LinkedIn</a>
-                    <a href="#" target="_blank" class="btn contact-details" id="email-link"><i class="fas fa-at"></i>Email</a>
-                </div>
-                <p>------------------</p>
-            </section>
-            
-            <section id="web-security" class="web-security-section">
-                <div class="web-security-section-header">
-                    <h2>Web Security</h2>
-                </div>
-                <p>This is some of the information about your computer that any web application can access:</p>
-                <ol>
-                    <li>availHeight
-                        <p>Height of the display screen, not including operating system features such as the Windows taskbar</p>
-                    </li>
-                    <li>availWidth
-                        <p>Width of the display screen, not including operating system features such as the Windows taskbar</p>
-                    </li>
-                    <li>colorDepth
-                        <p>Display screen’s bit depth if a color palette is in use; if a color palette is not in use, returns the value of the
-                        pixelDepth property</p>
-                    </li>
-                    <li>pixelDepth
-                        <p>Display screen’s color resolution in bits per pixel</p>
-                    </li>
-                    <li>height
-                        <p>Height of the display screen</p>
-                    </li>
-                    <li>width
-                        <p>Width of the display screen</p>
-                    </li>
-                </ol>
+                        let map = new google.maps.Map(document.getElementById("map"), mapOptions);
+                    </script> -->
+          </div>
+        </section>
 
-                <p>Here are some resources to learn about browsing the web safely</p>
-                <ul>
-                    <li><a href="https://www.getsafeonline.org/protecting-your-computer/safe-internet-use/" target="blank">https://www.getsafeonline.org/protecting-your-computer/safe-internet-use/</a>
-                    <p>This article summarizes key steps to take when browsing the web divided into important categories, like secure websites, cookies, and safe use of common browsers.</p></li>
-                    <li><a href="https://usa.kaspersky.com/resource-center/preemptive-safety/top-10-internet-safety-rules-and-what-not-to-do-online" target="blank">https://usa.kaspersky.com/resource-center/preemptive-safety/top-10-internet-safety-rules-and-what-not-to-do-online</a>
-                    <p>This article lists 10 important rules to follow in order to stay safe online, including tightening privacy settings, using a VPN if you can, and choosing strong passwords.</p></li>
-                    <li><a href="https://us.norton.com/internetsecurity-kids-safety-stop-stressing-10-internet-safety-rules-to-help-keep-your-family-safe-online.html" target="blank">https://us.norton.com/internetsecurity-kids-safety-stop-stressing-10-internet-safety-rules-to-help-keep-your-family-safe-online.html</a>
-                    <p>This article provides various Internet safety checklists for different groups of people, such as children, teens, parents, and the whole family.</p></li>
-                </ul>     
-            </section>
-
-           <!-- <article>
+        <!-- <article>
                 <header>
                     <h1>article header h1</h1>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sodales urna non odio egestas
@@ -294,18 +413,17 @@
                     semper consequat est, eu porta velit mollis nec. Curabitur posuere enim eget turpis feugiat tempor.
                     Etiam ullamcorper lorem dapibus velit suscipit ultrices.</p>
             </aside> -->
-
-        </div> <!-- #main -->
-    </div> <!-- #main-container -->
+      </div>
+      <!-- #main -->
+    </div>
+    <!-- #main-container -->
 
     <div class="footer-container">
-        <footer class="wrapper">
-            <p>
-                &copy 2021 Sherouk Omara
-            </p>
-        </footer>
+      <footer class="wrapper">
+        <p>&copy 2021 Sherouk Omara</p>
+      </footer>
     </div>
 
     <script src="js/main.js"></script>
-</body>
+  </body>
 </html>
